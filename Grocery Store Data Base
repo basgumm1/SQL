@@ -1,0 +1,24 @@
+/** Grocery Store List
+Ground Beef (3)
+Sugar (1)
+Milk (2)
+Cheese (7)
+Green Onion (2)
+**/
+
+Create table grocery_list (id integer primary key, name text, quantity integer, price integer);
+
+Insert into "grocery_list" Values (1, "ground beef", 3, 12.99);
+insert into "grocery_list" values (2, "sugar", 1, 6.49);
+Insert into "grocery_list" values (3, "milk", 2, 7.49);
+insert into "grocery_list" values (4, "cheese", 7, 13.99);
+Insert into "grocery_list" values (5, "green onion", 2, 4.99);
+
+Select * from grocery_list
+order by quantity;
+
+Select * from grocery_list
+group by price;
+
+Select avg(price) from grocery_list
+group by name;
