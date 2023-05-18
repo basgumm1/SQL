@@ -34,7 +34,7 @@ from "CharlotteChaze/BreakIntoTech"."netflix_people" people
 
 left join "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles
 ON people.show_id=titles.show_id
-where director = 'Bright Star' ;
+where titles.title = 'Bright Star' ;
 
 --What is the oldest movie in the database and what year was it made?
 Select titles.title
