@@ -1,0 +1,43 @@
+Select people.show_id
+,people.director
+,titles.title
+,titles.type
+FROM "CharlotteChaze/BreakIntoTech"."netflix_people" people
+
+left join "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles
+ON people.show_id=titles.show_id ;
+
+--How many movie titles are there in the database? (movies only, not tv shows)
+select count(titles.type)
+from "CharlotteChaze/BreakIntoTech"."netflix_titles_info"titles
+Where type='Movie' ;
+
+--When was the most recent batch of tv shows and/or movies added to the database?
+select max(titles.date_added)
+,titles.title
+from "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles
+where release_year='2021' 
+group by title ;
+
+--List all the movies and tv shows in alphabetical order.
+Select *
+from "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles
+order by title asc ;
+
+--Who was the Director for the movie Bright Star?
+Select titles.title
+,titles.type
+,titles.show_id
+,people.director
+,people.show_id
+from "CharlotteChaze/BreakIntoTech"."netflix_people" people
+
+left join "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles
+ON people.show_id=titles.show_id
+where director = 'Bright Star' ;
+
+--What is the oldest movie in the database and what year was it made?
+Select titles.title
+,titles.release_year
+from "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles
+order by release_year asc limit 1;
