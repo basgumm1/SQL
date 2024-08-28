@@ -1,0 +1,10 @@
+** Retrieve the identifiers of the O'Hare and Loop neighborhoods  from the neighborhoods table. **
+
+select
+    *
+from
+    neighborhoods
+where
+    name = 'Loop'
+or 
+    name like '%Hare';
