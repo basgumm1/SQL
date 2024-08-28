@@ -1,0 +1,19 @@
+** For November 1-7, 2017, the most popular taxi companies were Flash Cab and Taxi Affiliation Services. Find the number of rides for these two companies and name the resulting variable trips_amount. 
+For November 1-7, 2017, the most popular taxi companies were Flash Cab and Taxi Affiliation Services. Find the number of rides for these two companies and name the resulting variable trips_amount. **
+
+select
+case 
+    when company_name = 'Flash Cab' then 'Flash Cab'
+    when company_name = 'Taxi Affiliation Services' then 'Taxi Affiliation Services'
+    else 'Other'
+    end as company,
+    count(trips.trip_id) as trips_amount
+from
+    cabs
+inner join trips on trips.cab_id = cabs.cab_id
+where
+    cast(trips.start_ts as date) between '2017-11-01' and '2017-11-07'
+group by
+    company
+order by
+    trips_amount desc;
